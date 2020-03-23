@@ -13,6 +13,11 @@ RUN sudo apt-get install -y kubectl iputils-ping
 
 # Install extensions
 RUN code-server --install-extension vscjava.vscode-maven && \
-    code-server --install-extension redhat.java
+    code-server --install-extension redhat.java && \
+    code-server --install-extension redhat.vscode-xml
+
+# Maven alias instead of installing 2x
+RUN alias mvn=~/.local/share/code-server/extensions/vscjava.vscode-maven-*/resources/maven-wrapper/mvnw && \
+    cp -r .local/share/code-server/extensions/vscjava.vscode-maven-*/resources/maven-wrapper/.mvn/ /home/coder/
 
 RUN git config --global user.email info@brandtkeller.net && git config --global user.name brandtkeller
