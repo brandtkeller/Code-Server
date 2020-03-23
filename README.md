@@ -6,3 +6,7 @@ This repository is for custom baking the image for use in a kubernetes environme
 ## Jenkins Automated Builds
 
 This repository is setup to automatically build and push a new code-server docker image to a private registry at commit.
+
+## Extensions pre-installation
+
+Extensions will be pre-installed during the image build. Code server has a CLI for installing extensions.
