@@ -13,6 +13,6 @@ RUN sudo apt-get install -y kubectl iputils-ping
 
 # Install extensions
 RUN code-server --install-extension vscjava.vscode-maven && \
-    code-server --isntall-extension redhat.java
+    code-server --install-extension redhat.java
 
 RUN git config --global user.email info@brandtkeller.net && git config --global user.name brandtkeller
