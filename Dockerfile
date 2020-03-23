@@ -4,6 +4,15 @@ RUN sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 RUN sudo apt-get update
-RUN sudo apt-get install -y kubectl 
+
+# Install languages
+RUN sudo apt install default-jdk && sudo apt install openjdk-8-jdk
+
+# Install CLI tools
+RUN sudo apt-get install -y kubectl iputils-ping
+
+# Install extensions
+RUN code-server --install-extension vscjava.vscode-maven && \
+    code-server --isntall-extension redhat.java
 
 RUN git config --global user.email info@brandtkeller.net && git config --global user.name brandtkeller
