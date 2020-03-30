@@ -21,6 +21,6 @@ RUN code-server --install-extension vscjava.vscode-maven && \
 
 ADD ./binaries/helm /usr/local/bin/helm
 RUN sudo chmod +x /usr/local/bin/helm
-RUN helm init
+RUN helm init --client-only
 
 RUN git config --global user.email info@brandtkeller.net && git config --global user.name brandtkeller
