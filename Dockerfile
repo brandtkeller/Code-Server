@@ -13,6 +13,9 @@ RUN sudo apt install -y default-jdk openjdk-8-jdk maven --fix-missing
 
 # Install CLI tools
 RUN sudo apt-get install -y kubectl iputils-ping
+
+# Install npm related items
+RUN sudo npm cache clean -f && sudo npm install -g n && sudo n lts
 RUN sudo npm install -g ember-cli
 
 # Install extensions
