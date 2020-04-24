@@ -16,9 +16,9 @@ RUN sudo apt-get install -y kubectl iputils-ping
 RUN sudo npm install -g ember-cli
 
 # Install extensions
-RUN code-server --install-extension vscjava.vscode-maven && \
-    code-server --install-extension redhat.java && \
-    code-server --install-extension redhat.vscode-xml
+RUN code-server --install-extension vscjava.vscode-maven || echo "Problem installing Maven extension"
+RUN code-server --install-extension redhat.java || echo "Problem installing redhat java extension"
+RUN code-server --install-extension redhat.vscode-xml || echo "Problem installating redhat xml extension"
 
 ADD ./binaries/helm /usr/local/bin/helm
 RUN sudo chmod +x /usr/local/bin/helm
