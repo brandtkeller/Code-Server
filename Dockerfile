@@ -11,16 +11,13 @@ RUN sudo apt-get update
 # Install languages
 RUN sudo apt install -y default-jdk openjdk-8-jdk maven --fix-missing
 
-# Install node/npm from binary
-RUN wget https://nodejs.org/dist/v12.16.2/node-v12.16.2.tar.gz && tar -zxvf node-v12.16.2.tar.gz
-
-
 # Install CLI tools
 RUN sudo apt-get install -y kubectl iputils-ping
 
 # Install npm related items
-RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-RUN sudo apt install -y nodejs
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+RUN export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+RUN nvm install --lts
 RUN npm install -g ember-cli
 
 # Install extensions
