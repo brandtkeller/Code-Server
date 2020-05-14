@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coder
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coder
+  template:
+    metadata:
+      labels:
+        app: coder
+    spec:
+      containers:
+        - name: coder
+          image: 192.168.0.128:5000/code-server:0.0.21
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: coder-config
+          volumeMounts:
+            - name: nfs-coder
+              mountPath: /home/coder/project
+            - name: host-kube
+              mountPath: /home/coder/.kube
+          livenessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 60
+      volumes:
+      - name: nfs-coder
+        nfs: 
+          server: 192.168.0.128
+          path: /apps/code-server
+      - name: host-kube
+        hostPath:
+          path: /home/server/.kube
+          type: Directory

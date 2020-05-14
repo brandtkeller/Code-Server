@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coder-config
+  namespace: development
+  labels:
+    app: coder
+data:
+  PASSWORD: ""
+  VIRTUAL_HOST: "Home Development"
+  VIRTUAL_PORT: 8080
