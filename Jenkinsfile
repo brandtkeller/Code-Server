@@ -5,7 +5,7 @@ pipeline {
          HOME_REPO = 'http://192.168.0.122:32600/brandtkeller/Code-Server.git'
          GITHUB_REPO = 'github.com/brandtkeller/Code-Server.git'
          REGISTRY = '192.168.0.128:5000/'
-         IMAGE = '192.168.0.128:5000/code-Server'
+         IMAGE = '192.168.0.128:5000/code-server'
          PROJECT = 'Code-Server'
     }
     options {
