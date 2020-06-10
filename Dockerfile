@@ -9,7 +9,7 @@ RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /
 RUN sudo apt-get update
 
 # Install JDK & Maven
-RUN sudo apt install -y default-jdk openjdk-8-jdk maven --fix-missing
+RUN sudo apt install -y default-jdk maven --fix-missing
 
 # Install CLI tools
 RUN sudo apt-get install -y kubectl iputils-ping
