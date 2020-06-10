@@ -10,3 +10,6 @@ This repository is setup to automatically build and push a new code-server docke
 ## Extensions pre-installation
 
 Extensions will be pre-installed during the image build. Code server has a CLI for installing extensions.
+
+### TODO
+* Kubernetes rolling update

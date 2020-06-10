@@ -32,10 +32,21 @@ pipeline {
             steps {
                 sh 'rm -rf Code-Server'
                 sh 'git clone ${HOME_REPO}'
+                // Force the build command to pull a new latest tag image
+                sh 'docker image rm codercom/code-server:latest'
                 sh 'cd Code-Server && docker build -t ${IMAGE}:0.0.${BUILD_NUMBER} .'
                 sh 'docker push ${IMAGE}:0.0.${BUILD_NUMBER}'
                 sh 'docker image rm ${IMAGE}:0.0.${BUILD_NUMBER}'
                 sh 'rm -rf Code-Server'
+            }
+        }
+
+        stage('Rolling Deployment to Cluster') {
+            agent { node { label 'docker' } }
+            when { branch 'master' }
+            steps {
+                sh 'kubectl config set-context --current --namespace=development'
+                sh 'kubectl set image deployments/coder coder=${IMAGE}:0.0.${BUILD_NUMBER}'
             }
         }
 
