@@ -31,3 +31,4 @@ RUN helm init --client-only
 
 # Hardcoded git configuration - parameterize this
 RUN git config --global user.email info@brandtkeller.net && git config --global user.name brandtkeller
+RUN sudo echo "source /usr/share/bash-completion/completions/git" >> ~/.bashrc
