@@ -12,4 +12,4 @@ This repository is setup to automatically build and push a new code-server docke
 Extensions will be pre-installed during the image build. Code server has a CLI for installing extensions.
 
 ### TODO
-* Kubernetes rolling update
+* Parameterize the Dockerfile and Jenkinsfile for any hardcoded values
