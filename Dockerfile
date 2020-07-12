@@ -2,11 +2,10 @@ FROM codercom/code-server:latest
 
 # Apt cleanup procedures
 RUN sudo apt clean && sudo rm -rf /var/lib/apt/lists/* && sudo apt clean
-RUN sudo apt-get update && sudo apt-get install -y python apt-transport-https gnupg build-essential manpages-dev software-properties-common
-RUN sudo apt-add-repository ppa:ansible/ansible
+RUN sudo apt-get update && sudo apt-get install -y python apt-transport-https gnupg build-essential manpages-dev software-properties-common anisble
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-RUN sudo apt-get update && sudo apt install -y ansible
+RUN sudo apt-get update
 
 # Install JDK & Maven
 RUN sudo apt install -y default-jdk maven --fix-missing
