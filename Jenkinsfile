@@ -33,7 +33,7 @@ pipeline {
                 sh 'rm -rf Code-Server'
                 sh 'git clone ${HOME_REPO}'
                 // Force the build command to pull a new latest tag image
-                sh 'docker image rm codercom/code-server:latest'
+                sh 'docker image rm codercom/code-server:latest || echo "No image to remove"'
                 sh 'cd Code-Server && docker build -t ${IMAGE}:0.0.${BUILD_NUMBER} .'
                 sh 'docker push ${IMAGE}:0.0.${BUILD_NUMBER}'
                 sh 'docker image rm ${IMAGE}:0.0.${BUILD_NUMBER}'
