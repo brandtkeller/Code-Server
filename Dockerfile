@@ -23,10 +23,8 @@ RUN code-server --install-extension vscjava.vscode-maven || echo "Problem instal
 RUN code-server --install-extension redhat.java || echo "Problem installing redhat java extension"
 RUN code-server --install-extension redhat.vscode-xml || echo "Problem installating redhat xml extension"
 
-# Install local binariesk
+# Install local binaries
 ADD ./binaries/helm /usr/local/bin/helm
-RUN sudo chmod +x /usr/local/bin/helm
-RUN helm init --client-only
 
 # Hardcoded git configuration - parameterize this
 RUN git config --global user.email info@brandtkeller.net && git config --global user.name brandtkeller
