@@ -26,6 +26,9 @@ RUN code-server --install-extension redhat.vscode-xml || echo "Problem installat
 # Install local binaries
 ADD ./binaries/helm /usr/local/bin/helm
 
+# Add user settings to coder
+ADD settings.json /home/coder/.local/share/code-server/User/settings.json
+
 # Hardcoded git configuration - parameterize this
 RUN git config --global user.email info@brandtkeller.net && git config --global user.name brandtkeller
 RUN sudo echo "source /usr/share/bash-completion/completions/git" >> ~/.bashrc
