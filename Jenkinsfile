@@ -45,7 +45,7 @@ pipeline {
             agent { node { label 'docker' } }
             when { branch 'master' }
             steps {
-                sh 'kubectl config set-context --current --namespace=development'
+                sh 'kubectl config set-context --current --namespace=cicd'
                 sh 'kubectl set image deployments/coder coder=${IMAGE}:0.0.${BUILD_NUMBER}'
             }
         }
