@@ -18,8 +18,7 @@ pipeline {
 
                         // sh 'buildah bud -t registry.home.local:8443/test/code-server:3.8.0'
                         // sh 'buildah push registry.home.local:8443/test/code-server:3.8.0'
-                        sh 'VER=$(cat VERSION)'
-                        sh 'echo ${VER}'
+                        sh 'VER=$(cat VERSION) && echo ${VER}'
                     }
                 }
                 stage('Master Branch') {
