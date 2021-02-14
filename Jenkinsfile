@@ -15,17 +15,17 @@ pipeline {
                 stage('Feature Branch') {
                     when { not { branch 'master' } }
                     steps {
-
-                        // sh 'buildah bud -t registry.home.local:8443/test/code-server:3.8.0'
-                        // sh 'buildah push registry.home.local:8443/test/code-server:3.8.0'
-                        sh 'VER=$(cat VERSION) && echo ${VER}'
+                        sh 'VER=$(cat VERSION) && echo ${VER} && \
+                            buildah bud --build-arg BASE_TAG=${VER} -t registry.home.local:8443/dev/code-server:${VER}-${BUILD_NUMBER} && \
+                            buildah push registry.home.local:8443/dev/code-server:${VER}-${BUILD_NUMBER}'
                     }
                 }
                 stage('Master Branch') {
                     when { branch 'master' }
                     steps {
-                        sh 'buildah bud -t registry.home.local:8443/test/code-server:3.8.0'
-                        sh 'buildah push registry.home.local:8443/test/code-server:3.8.0'
+                        sh 'VER=$(cat VERSION) && echo ${VER} && \
+                            buildah bud --build-arg BASE_TAG=${VER} -t registry.home.local:8443/test/code-server:${VER} && \
+                            buildah push registry.home.local:8443/test/code-server:${VER}'
                     }
                 }
                 stage('Mirror to public Github') {
