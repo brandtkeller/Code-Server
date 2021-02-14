@@ -1,5 +1,5 @@
-ARG BASE_REGISTRY=registry.home.local:8443
-ARG BASE_IMAGE=ext/code-server
+ARG BASE_REGISTRY=docker.io
+ARG BASE_IMAGE=codercom/code-server
 ARG BASE_TAG=3.8.0
 FROM $BASE_REGISTRY/$BASE_IMAGE:$BASE_TAG
 

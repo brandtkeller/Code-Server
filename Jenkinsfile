@@ -10,7 +10,7 @@ pipeline {
     }
     stages {
         stage('Build Stages') {
-            agent { label 'jenkins-jenkins-agent' }
+            agent { label 'jenkins-buildah-agent' }
             stages {
                 stage('Feature Branch') {
                     when { not { branch 'master' } }
