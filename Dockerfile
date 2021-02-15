@@ -17,7 +17,7 @@ RUN sudo apt-get update
 # && \. "$NVM_DIR/bash_completion" && nvm install --lts && npm install -g ember-cli
 
 # Install CLI tools
-RUN sudo apt-get install -y kubectl helm
+RUN sudo apt-get install -y kubectl helm python3-pip
 
 # Install extensions
 # RUN code-server --install-extension vscjava.vscode-maven || echo "Problem installing Maven extension"
