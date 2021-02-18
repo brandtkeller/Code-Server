@@ -1,6 +1,6 @@
 ARG BASE_REGISTRY=docker.io
 ARG BASE_IMAGE=codercom/code-server
-ARG BASE_TAG=3.8.0
+ARG BASE_TAG=3.9.0
 FROM $BASE_REGISTRY/$BASE_IMAGE:$BASE_TAG
 
 # Apt cleanup procedures
@@ -18,6 +18,10 @@ RUN sudo apt-get update
 
 # Install CLI tools
 RUN sudo apt-get install -y kubectl helm python3-pip
+
+# Instal FLux
+RUN curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
+
 
 # Install extensions
 # RUN code-server --install-extension vscjava.vscode-maven || echo "Problem installing Maven extension"
